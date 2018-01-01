@@ -1,6 +1,6 @@
 {
     "name": "wadjet-precalculated",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "The your birth date is based on statistical psychology and will expose your personality. This package as a mocule does its calculations.",
     "license": "MIT",
     "author": {
@@ -43,8 +43,7 @@
         "clean": ".tools/clean",
         "precalc": "node dist/precalc",
         "prepublish": "yon run babel && yon run precalc",
-        "start": "yon run watch_api & yon run watch_precalc",
-        "watch_api": "watch 'yon run babel' src/api --interval=2",
-        "watch_precalc": "watch 'yon prepublish' src/precalc --interval=2"
+        "start": "watch 'yon run prepublish' src --interval=2",
+        "test": ""
     }
 }
