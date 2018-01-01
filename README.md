@@ -8,6 +8,14 @@ This package as a module does its calculations.
 * Pre-calculated.
 * Reverse calculation. (Personal type -> birthday)
 
+## APIs
+
+* `personalityAsync(birth: string) -> Promise.<Personality>`
+* `birthdaysAsync(type: string, category: 'inner'|'outer'|'workstyle') -> Promise.<Date[]>`
+* `detailAsync(type: string) -> Promise.<Detail>`
+
+_TBW_
+
 ## See also
 
 * [Release history](https://github.com/danmaq/wadjet-precalculated/releases)

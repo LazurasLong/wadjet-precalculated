@@ -1,6 +1,6 @@
 {
     "name": "wadjet-precalculated",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "The your birth date is based on statistical psychology and will expose your personality. This package as a mocule does its calculations.",
     "license": "MIT",
     "author": {
