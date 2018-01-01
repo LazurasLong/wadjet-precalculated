@@ -5,5 +5,4 @@
 dist/precalc
 jsconfig.json
 node_modules
-precalc.babelrc
 src
