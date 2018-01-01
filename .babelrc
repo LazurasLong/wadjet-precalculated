@@ -4,10 +4,7 @@
             "@babel/preset-env",
             {
                 "targets": {
-                    "android": "4.4.3",
-                    "ie": "11",
-                    "firefox": "52",
-                    "node": "4.8.7"
+                    "node": "6.12.2"
                 }
             }
         ]
