@@ -1,7 +1,9 @@
+.babelrc
 .jsbeautifyrc
 .tools
 .vscode
 dist/precalc
 jsconfig.json
 node_modules
+precalc.babelrc
 src
