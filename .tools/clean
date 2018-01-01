@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd $(cd $(dirname $0); pwd)/..
-rm -rf node_modules
+rm -rf node_modules dist yarn-error.log *.db
 yarn cache clean

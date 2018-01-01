@@ -1,5 +1,5 @@
 {
-    "name": "wadjet-fast",
+    "name": "wadjet-precalculated",
     "version": "0.1.0",
     "description": "The your birth date is based on statistical psychology and will expose your personality. This package as a mocule does its calculations.",
     "license": "MIT",
@@ -8,21 +8,43 @@
         "email": "info@danmaq.com",
         "url": "https://danmaq.com"
     },
-    "homepage": "https://github.com/danmaq/wadjet-fast",
+    "homepage": "https://github.com/danmaq/wadjet-precalculated",
     "bugs": {
-        "url": "https://github.com/danmaq/wadjet-fast/issues"
+        "url": "https://github.com/danmaq/wadjet-precalculated/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/danmaq/wadjet-fast.git"
-    },
-    "scripts": {
-
+        "url": "https://github.com/danmaq/wadjet-precalculated.git"
     },
     "engines": {
         "node": ">=4.8.3"
     },
     "dependencies": {
+        "@babel/runtime": "^7.0.0-beta.36",
+        "nedb": "^1.8.0",
         "wadjet": "^3.3.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.0.0-beta.36",
+        "@babel/core": "^7.0.0-beta.36",
+        "@babel/plugin-transform-runtime": "^7.0.0-beta.36",
+        "@babel/preset-env": "^7.0.0-beta.36",
+        "nedb-promise": "^2.0.1",
+        "progress": "^2.0.0",
+        "watch": "^1.0.2",
+        "yarn-or-npm": "^2.0.4"
+    },
+    "main": "dist/api",
+    "scripts": {
+        "babel": "yon run babel_all && yon run babel_precalc",
+        "babel_all": "babel src -d dist",
+        "babel_cli": "babel",
+        "babel_precalc": "babel --config-file ./precalc.babelrc src/precalc -d dist/precalc",
+        "clean": ".tools/clean",
+        "precalc": "node dist/precalc",
+        "prepublish": "yon run babel && yon run precalc",
+        "start": "yon run watch_api & yon run watch_precalc",
+        "watch_api": "watch 'yon run babel' src/api --interval=2",
+        "watch_precalc": "watch 'yon prepublish' src/precalc --interval=2"
     }
 }
