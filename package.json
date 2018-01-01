@@ -1,0 +1,28 @@
+{
+    "name": "wadjet-fast",
+    "version": "0.1.0",
+    "description": "The your birth date is based on statistical psychology and will expose your personality. This package as a mocule does its calculations.",
+    "license": "MIT",
+    "author": {
+        "name": "Shuhei Nomura (danmaq)",
+        "email": "info@danmaq.com",
+        "url": "https://danmaq.com"
+    },
+    "homepage": "https://github.com/danmaq/wadjet-fast",
+    "bugs": {
+        "url": "https://github.com/danmaq/wadjet-fast/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/danmaq/wadjet-fast.git"
+    },
+    "scripts": {
+
+    },
+    "engines": {
+        "node": ">=4.8.3"
+    },
+    "dependencies": {
+        "wadjet": "^3.3.0"
+    }
+}

@@ -1,0 +1,5 @@
+.jsbeautifyrc
+.tools
+.vscode
+jsconfig.json
+node_modules
