@@ -13,12 +13,27 @@ const db = new nedb({ filename: PERSONALITY_DB_NAME, autoload: true });
 /**
  * @typedef Personality
  * @type {object}
+ * @property {string} date
  * @property {number} cycle
  * @property {string} inner
  * @property {string} lifeBase
  * @property {string} outer
  * @property {string} potential
  * @property {string} workstyle
+ */
+
+/**
+ * @typedef Detail
+ * @type {object}
+ * @property {string} type
+ * @property {string} communication
+ * @property {string} management
+ * @property {string} response
+ * @property {string} position
+ * @property {string} motivation
+ * @property {Object.<string, number>} romance
+ * @property {Object.<string, number>} business
+ * @property {Object.<string, string>} bizTeam
  */
 
 /**
@@ -32,7 +47,7 @@ export const personalityAsync =
         (resolve, reject) => {
             const d = typeof birth === 'string' ? new Date(birth) : birth;
             const diff = (d.getTime() - new Date(FIRST_DATE).getTime());
-            const params = { date: days / DATE >> 0 };
+            const params = { date: diff / DATE >> 0 };
             db.findOne(params, (e, r) => e ? reject(e) : resolve(r));
         });
 
@@ -60,3 +75,14 @@ export const birthdaysAsync =
         db.find(
             query(type, category),
             (e, r) => e ? reject(e) : r.map(({ date }) => new Date(date))));
+
+/**
+ * Get detail from personality type.
+ * @param {string} type Personality type.
+ * @returns {Promise.<Detail>} Detail.
+ */
+export const detailAsync =
+    type =>
+    new Promise(
+        (resolve, reject) => db.findOne({ type }),
+        (e, r) => e ? reject(e) : resolve(r));
