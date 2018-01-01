@@ -78,6 +78,7 @@ const precalcDetailAsync =
         for (const type of wadjet.types) {
             const detail = wadjet.detail(type);
             detail.type = type;
+            delete detail.nature;
             detail.bizTeam =
                 wadjet.bizTeam(detail.business, type, detail.position);
             await db.insert(detail);
