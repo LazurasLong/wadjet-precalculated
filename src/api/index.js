@@ -7,8 +7,13 @@ import { DETAIL_DB_NAME, FIRST_DATE, PERSONALITY_DB_NAME } from '../common';
 /** Milliseconds per a day. */
 const DATE = 1000 * 60 * 60 * 24;
 
-/** Current database. */
-const db = new nedb({ filename: PERSONALITY_DB_NAME, autoload: true });
+/** Personality database. */
+const personalityDb =
+    new nedb({ filename: PERSONALITY_DB_NAME, autoload: true });
+
+/** Detail database. */
+const detailDb =
+    new nedb({ filename: DETAIL_DB_NAME, autoload: true });
 
 /**
  * @typedef Personality
@@ -48,7 +53,8 @@ export const personalityAsync =
             const d = typeof birth === 'string' ? new Date(birth) : birth;
             const diff = (d.getTime() - new Date(FIRST_DATE).getTime());
             const params = { date: diff / DATE >> 0 };
-            db.findOne(params, (e, r) => e ? reject(e) : resolve(r));
+            personalityDb.findOne(
+                params, (e, r) => e ? reject(e) : resolve(r));
         });
 
 /**
@@ -72,9 +78,10 @@ export const birthdaysAsync =
     (type, category = 'inner') =>
     new Promise(
         (resolve, reject) =>
-        db.find(
+        personalityDb.find(
             query(type, category),
-            (e, r) => e ? reject(e) : r.map(({ date }) => new Date(date))));
+            (e, r) =>
+            e ? reject(e) : r.map(({ date }) => new Date(date))));
 
 /**
  * Get detail from personality type.
@@ -84,5 +91,5 @@ export const birthdaysAsync =
 export const detailAsync =
     type =>
     new Promise(
-        (resolve, reject) => db.findOne({ type }),
+        (resolve, reject) => detailDb.findOne({ type }),
         (e, r) => e ? reject(e) : resolve(r));
